@@ -1,0 +1,15 @@
+{
+  "name": "Sapphire 4",
+  "description": "Sapphire has a cold heart.",
+  "image": "https://gateway.pinata.cloud/ipfs/QmVsLEquNYAZ7tqegchTHtXrrqpydd3uWkcETSxKwZwcad/4/2.png",
+  "attributes": [
+    {
+      "trait_type": "Rank",
+      "value": 4
+    },
+    {
+      "trait_type": "Type",
+      "value": "Sapphire"
+    }
+  ]
+}

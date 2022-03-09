@@ -1,0 +1,15 @@
+{
+  "name": "Diamond 1",
+  "description": "Diamond is on top of everything.",
+  "image": "https://gateway.pinata.cloud/ipfs/QmVsLEquNYAZ7tqegchTHtXrrqpydd3uWkcETSxKwZwcad/1/4.png",
+  "attributes": [
+    {
+      "trait_type": "Rank",
+      "value": 1
+    },
+    {
+      "trait_type": "Type",
+      "value": "Diamond"
+    }
+  ]
+}

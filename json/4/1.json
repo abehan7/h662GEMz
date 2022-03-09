@@ -1,0 +1,15 @@
+{
+  "name": "Emerald 4",
+  "description": "Emerald never betray you.",
+  "image": "https://gateway.pinata.cloud/ipfs/QmVsLEquNYAZ7tqegchTHtXrrqpydd3uWkcETSxKwZwcad/4/1.png",
+  "attributes": [
+    {
+      "trait_type": "Rank",
+      "value": 4
+    },
+    {
+      "trait_type": "Type",
+      "value": "Emerald"
+    }
+  ]
+}
