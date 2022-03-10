@@ -36,11 +36,42 @@ contract MintGem is ERC721Enumerable, Ownable {
         require(gemPrice <= msg.value, "Not enough Klay.");
 
         uint tokenId = totalSupply() + 1;
+        uint randomNonce = tokenId;
+
+        uint gemRank;
+        uint gemType;
+
+        uint randomRank = uint(keccak256(abi.encodePacked(blockhash(block.timestamp), msg.sender, randomNonce))) % 10;
+        randomNonce++;
+        uint randomType = uint(keccak256(abi.encodePacked(blockhash(block.timestamp), msg.sender, randomNonce))) % 10;
+
+
+        if(randomRank < 4) {
+            gemRank = 1;
+        } else if (4 <= randomRank && randomRank < 7) {
+            gemRank = 2;
+        } else if (7 <= randomRank && randomRank < 9) {
+            gemRank = 3;
+        } else {
+            gemRank = 4;
+        }
+
+        if(randomType < 4) {
+            gemType = 1;
+        } else if (4 <= randomType && randomType < 7) {
+            gemType = 2;
+        } else if (7 <= randomType && randomType < 9) {
+            gemType = 3;
+        } else {
+            gemType = 4;
+        }
 
         payable(owner()).transfer(msg.value);
 
-        gemData[tokenId] = GemData(3, 3);
+        gemData[tokenId] = GemData(gemRank, gemType);
 
         _mint(msg.sender, tokenId);
     }
 }
+
+
