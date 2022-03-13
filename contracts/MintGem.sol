@@ -72,6 +72,14 @@ contract MintGem is ERC721Enumerable, Ownable {
 
         _mint(msg.sender, tokenId);
     }
+
+    function getLatestMintedGem(address _owner) public view returns (uint, uint) {
+        uint balanceLength = balanceOf(_owner);
+
+        uint tokenId = tokenOfOwnerByIndex(_owner, balanceLength - 1);
+
+        return (gemData[tokenId].gemRank, gemData[tokenId].gemType);
+    }
 }
 
 
