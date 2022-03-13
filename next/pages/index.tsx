@@ -1,16 +1,20 @@
-import { Box } from "@chakra-ui/react";
+import { Button, Flex, useDisclosure } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import { useEffect } from "react";
-
-import { useCaver } from "../hooks";
+import MintingModal from "../components/MintingModal";
 
 const Home: NextPage = () => {
-  const { caver, mintGemContract } = useCaver();
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
-  useEffect(() => console.log(caver), [caver]);
-  useEffect(() => console.log(mintGemContract), [mintGemContract]);
-
-  return <Box>Home</Box>;
+  return (
+    <>
+      <Flex justifyContent="center" alignItems="center" minH="100vh">
+        <Button colorScheme="purple" onClick={onOpen}>
+          민팅하기
+        </Button>
+      </Flex>
+      <MintingModal isOpen={isOpen} onClose={onClose} />
+    </>
+  );
 };
 
 export default Home;
