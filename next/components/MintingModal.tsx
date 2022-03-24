@@ -16,6 +16,7 @@ import axios from "axios";
 import { FC, useState } from "react";
 import { MINT_GEM_ADDRESS } from "../caverConfig";
 import { useAccount, useCaver } from "../hooks";
+import { IGem } from "../interfaces";
 
 interface MintingModalProps {
   isOpen: boolean;
