@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract MintGem is ERC721Enumerable, Ownable {
+contract MintGemToken is ERC721Enumerable, Ownable {
     string uri;
 
     constructor(string memory _name, string memory _symbol, string memory _uri) ERC721(_name, _symbol) {
@@ -48,9 +48,9 @@ contract MintGem is ERC721Enumerable, Ownable {
 
         if(randomRank < 4) {
             gemRank = 1;
-        } else if (4 <= randomRank && randomRank < 7) {
+        } else if (randomRank < 7) {
             gemRank = 2;
-        } else if (7 <= randomRank && randomRank < 9) {
+        } else if (randomRank < 9) {
             gemRank = 3;
         } else {
             gemRank = 4;
@@ -58,9 +58,9 @@ contract MintGem is ERC721Enumerable, Ownable {
 
         if(randomType < 4) {
             gemType = 1;
-        } else if (4 <= randomType && randomType < 7) {
+        } else if (randomType < 7) {
             gemType = 2;
-        } else if (7 <= randomType && randomType < 9) {
+        } else if (randomType < 9) {
             gemType = 3;
         } else {
             gemType = 4;
@@ -79,6 +79,24 @@ contract MintGem is ERC721Enumerable, Ownable {
         uint tokenId = tokenOfOwnerByIndex(_owner, balanceLength - 1);
 
         return (gemData[tokenId].gemRank, gemData[tokenId].gemType);
+    }
+
+    function getGemTokens(address _owner) public view returns (GemData[] memory) {
+        uint balanceLength = balanceOf(_owner);
+
+        require(balanceLength != 0, "Token owner did not have token.");
+
+        GemData[] memory gemDataArray = new GemData[](balanceLength);
+
+        for(uint i = 0; i < balanceLength; i++) {
+            uint tokenId = tokenOfOwnerByIndex(_owner, i);
+            uint gemRank = gemData[tokenId].gemRank;
+            uint gemType = gemData[tokenId].gemType;
+
+            gemDataArray[i] = GemData(gemRank, gemType);
+        }
+
+        return gemDataArray;
     }
 }
 
